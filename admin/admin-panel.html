@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>प्रशासनिक प्यानल — वार्ड ११</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+  <div class="header" style="background: linear-gradient(135deg, #b71c1c 0%, #7f0000 100%);">
+    <h1>प्रशासनिक प्यानल — वार्ड ११</h1>
+    <p class="sub">गुनासो व्यवस्थापन | कामको विवरण | उम्मेदवार प्रोफाइल</p>
+  </div>
+
+  <div class="card">
+    <h2>प्रशासनिक लगिन</h2>
+    <form id="adminLoginForm">
+      <label for="adminEmail">इमेल</label>
+      <input type="email" id="adminEmail" placeholder="admin@ward11.local" value="admin@ward11.local">
+      <br><br>
+      <button type="submit">लगिन गर्नुहोस्</button>
+      <p style="font-size:0.85rem; color:#777; margin-top:8px;">पहिलो पटक प्रयोग गर्दा स्वचालित रूपमा खाता बन्छ।</p>
+    </form>
+  </div>
+
+  <div id="adminArea" style="display:none;">
+    <div class="alert alert-success" id="adminStatus">लगिन सफल</div>
+
+    <!-- Complaints -->
+    <div class="card">
+      <h2>गुनासो सूची</h2>
+      <div class="table-wrap">
+        <table id="complaintsTable">
+          <thead><tr><th>ID</th><th>शीर्षक</th><th>पहिचान</th><th>स्थिति</th><th>दर्ता मिति</th><th>कार्य</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Status Update -->
+    <div class="card">
+      <h2>गुनासो स्थिती अपडेट</h2>
+      <form id="statusForm">
+        <label for="compSelect">गुनासो छान्नुहोस्</label>
+        <select id="compSelect"></select>
+        <label for="newStatus">नयाँ स्थिति</label>
+        <select id="newStatus">
+          <option value="pending">बाँकी (Pending)</option>
+          <option value="on_work">काम भइरहेको (On Work)</option>
+          <option value="completed">सम्पन्न (Completed)</option>
+        </select>
+        <br><br>
+        <button type="submit">अपडेट गर्नुहोस्</button>
+      </form>
+    </div>
+
+    <!-- Post Upload -->
+    <div class="card">
+      <h2>प्रशासनिक पोस्ट अपलोड</h2>
+      <p style="color:#555;">गुनासो समाधान भएको जानकारी, फोटोसहित पोस्ट गर्नुहोस्। (अधिकतम ५ फोटो)</p>
+      <form id="postForm">
+        <label for="postComp">सम्बन्धित गुनासो ID</label>
+        <input type="number" id="postComp" placeholder="गुनासो ID">
+        <label for="postContent">पोस्ट विवरण</label>
+        <textarea id="postContent" rows="3" placeholder="जस्तै: बाटो मर्मत सम्पन्न, अब सवारी सहज।"></textarea>
+        <label for="postStatus">पोस्ट स्थिति</label>
+        <input type="text" id="postStatus" placeholder="जस्तै: मर्मत सम्पन्न, फोटोसहित।">
+        <label for="postPhotos">फोटोहरू (अधिकतम ५)</label>
+        <input type="file" id="postPhotos" accept="image/*" multiple>
+        <br><br>
+        <button type="submit">पोस्ट अपलोड गर्नुहोस्</button>
+      </form>
+    </div>
+
+    <!-- Candidate Profile -->
+    <div class="card">
+      <h2>निर्वाचन उम्मेदवार प्रोफाइल</h2>
+      <form id="candidateForm">
+        <div class="form-row">
+          <div>
+            <label for="candUserId">उम्मेदवार ID / इमेल</label>
+            <input type="text" id="candUserId" placeholder="जस्तै: 1 वा candidate@email.com">
+          </div>
+          <div>
+            <label for="candName">नाम</label>
+            <input type="text" id="candName" placeholder="उम्मेदवारको नाम">
+          </div>
+        </div>
+        <label for="candProfile">प्रोफाइल विवरण</label>
+        <textarea id="candProfile" rows="3" placeholder="उम्मेदवारको काम र प्रतिबद्धता"></textarea>
+        <label for="candElection">निर्वाचन नाम</label>
+        <input type="text" id="candElection" placeholder="जस्तै: वडा अध्यक्ष २०८१">
+        <label for="candPhoto">फोटो (वैकल्पिक)</label>
+        <input type="file" id="candPhoto" accept="image/*">
+        <label for="candStats">कामको तथ्याङ्क (JSON)</label>
+        <input type="text" id="candStats" placeholder='{"completed":15,"on_work":10,"pending":44}'>
+        <br><br>
+        <button type="submit">प्रोफाइल अपडेट गर्नुहोस्</button>
+      </form>
+    </div>
+
+    <!-- Election Transfer -->
+    <div class="card">
+      <h2>निर्वाचन समय — प्रशासनिक शक्ति हस्तान्तरण</h2>
+      <p style="color:#555;">निर्वाचनको समयमा प्रशासनिक प्यानलको शक्ति उम्मेदवारलाई हस्तान्तरण गर्न सकिन्छ।</p>
+      <form id="transferForm">
+        <label for="candidateTransferId">उम्मेदवार ID</label>
+        <input type="text" id="candidateTransferId" placeholder="जस्तै: 5">
+        <br><br>
+        <button type="submit">शक्ति हस्तान्तरण गर्नुहोस्</button>
+      </form>
+    </div>
+
+    <!-- Stats Monitor -->
+    <div class="card">
+      <h2>विस्तृत तथ्याङ्क</h2>
+      <div class="stats-grid">
+        <div class="stat-box"><h3 id="adm-completed">0</h3><p>सम्पन्न</p></div>
+        <div class="stat-box"><h3 id="adm-onwork">0</h3><p>काम भइरहेको</p></div>
+        <div class="stat-box"><h3 id="adm-pending">0</h3><p>बाँकी</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let adminToken = '';
+let currentComplaints = [];
+
+// Login
+const loginForm = document.getElementById('adminLoginForm');
+loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+        const res = await fetch('/api/admin/login', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ email: document.getElementById('adminEmail').value, password: 'admin' }) });
+        const result = await res.json();
+        if (result.token) {
+            adminToken = result.token;
+            document.getElementById('adminArea').style.display = 'block';
+            document.getElementById('adminStatus').textContent = 'लगिन सफल — ID: ' + result.token;
+            loadComplaints();
+            loadStats();
+        } else {
+            alert('लगिन असफल: ' + (result.error || 'अज्ञात'));
+        }
+    } catch (err) {
+        alert('समस्या: ' + err.message);
+    }
+});
+
+// Load complaints
+async function loadComplaints() {
+    try {
+        const res = await fetch('/api/admin/complaints', { headers: { 'Authorization': 'Bearer ' + adminToken } });
+        const rows = await res.json();
+        currentComplaints = rows;
+        const tbody = document.querySelector('#complaintsTable tbody');
+        tbody.innerHTML = rows.map(r => `
+            <tr>
+                <td>${r.id}</td>
+                <td>${r.title}</td>
+                <td>${r.identity_revealed ? 'खुला' : 'गोप्य'}</td>
+                <td><span class="badge ${r.status === 'completed' ? 'badge-completed' : (r.status === 'on_work' ? 'badge-work' : 'badge-pending')}">${r.status}</span></td>
+                <td>${new Date(r.created_at).toLocaleDateString('ne-NP')}</td>
+                <td><button onclick="selectComp(${r.id})" class="small-btn">अपडेट</button></td>
+            </tr>
+        `).join('');
+
+        const sel = document.getElementById('compSelect');
+        sel.innerHTML = rows.map(r => `<option value="${r.id}">${r.id} - ${r.title.substring(0, 30)}</option>`).join('');
+    } catch (e) { console.error('Load complaints error', e); }
+}
+
+function selectComp(id) {
+    document.getElementById('compSelect').value = id;
+    document.getElementById('newStatus').value = 'pending';
+}
+
+// Status update
+const statusForm = document.getElementById('statusForm');
+statusForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const id = document.getElementById('compSelect').value;
+    const status = document.getElementById('newStatus').value;
+    try {
+        const res = await fetch('/api/admin/complaint/' + id + '/status', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + adminToken },
+            body: JSON.stringify({ status })
+        });
+        const result = await res.json();
+        if (result.success || result.updated !== undefined) {
+            alert('स्थिति अपडेट भयो');
+            loadComplaints();
+            loadStats();
+        } else {
+            alert('त्रुटि: ' + (result.error || 'अज्ञात'));
+        }
+    } catch (err) { alert('समस्या: ' + err.message); }
+});
+
+// Post upload
+const postForm = document.getElementById('postForm');
+postForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData();
+    fd.append('complaint_id', document.getElementById('postComp').value);
+    fd.append('content', document.getElementById('postContent').value);
+    fd.append('status_text', document.getElementById('postStatus').value);
+    const files = document.getElementById('postPhotos').files;
+    for (let i = 0; i < Math.min(files.length, 5); i++) fd.append('photos', files[i]);
+    try {
+        const res = await fetch('/api/admin/post', { method: 'POST', headers: { 'Authorization': 'Bearer ' + adminToken }, body: fd });
+        const result = await res.json();
+        if (result.success) {
+            alert('पोस्ट सफलतापूर्वक अपलोड भयो! ID: ' + result.post_id);
+            postForm.reset();
+        } else {
+            alert('त्रुटि: ' + (result.error || 'अज्ञात'));
+        }
+    } catch (err) { alert('समस्या: ' + err.message); }
+});
+
+// Candidate profile
+const candidateForm = document.getElementById('candidateForm');
+candidateForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData();
+    fd.append('user_id', document.getElementById('candUserId').value);
+    fd.append('election_name', document.getElementById('candElection').value);
+    fd.append('profile_text', document.getElementById('candProfile').value);
+    fd.append('stats_json', document.getElementById('candStats').value);
+    const photo = document.getElementById('candPhoto').files[0];
+    if (photo) fd.append('profile_photo', photo);
+    try {
+        const res = await fetch('/api/admin/candidate', { method: 'POST', headers: { 'Authorization': 'Bearer ' + adminToken }, body: fd });
+        const result = await res.json();
+        alert(result.success ? 'प्रोफाइल अपडेट भयो!' : 'त्रुटि: ' + (result.error || 'अज्ञात'));
+    } catch (err) { alert('समस्या: ' + err.message); }
+});
+
+// Transfer admin power
+const transferForm = document.getElementById('transferForm');
+transferForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+        const res = await fetch('/api/admin/transfer', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + adminToken },
+            body: JSON.stringify({ to_candidate_user_id: document.getElementById('candidateTransferId').value })
+        });
+        const result = await res.json();
+        alert(result.success ? 'शक्ति हस्तान्तरण सफल!' : 'त्रुटि: ' + (result.error || 'अज्ञात'));
+    } catch (err) { alert('समस्या: ' + err.message); }
+});
+
+// Stats
+async function loadStats() {
+    try {
+        const res = await fetch('/api/stats');
+        const data = await res.json();
+        document.getElementById('adm-completed').textContent = data.completed || 0;
+        document.getElementById('adm-onwork').textContent = data.on_work || 0;
+        document.getElementById('adm-pending').textContent = data.pending || 0;
+    } catch (e) { console.error('Stats error', e); }
+}
+
+loadStats();
+</script>
+</body>
+</html>

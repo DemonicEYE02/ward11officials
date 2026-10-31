@@ -1,0 +1,216 @@
+/* Official Nepal Government Website Theme — Ward 11 Ghodsuwa */
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --np-red: #C8102E;
+  --np-red-dark: #A30D24;
+  --np-green: #007A3D;
+  --np-green-dark: #005A2B;
+  --np-gold: #D4AF37;
+  --np-dark: #1A1A2E;
+  --np-body: #F8F6F1;
+  --np-card: #FFFFFF;
+  --np-text: #222222;
+  --np-subtext: #555555;
+  --np-border: #E0DCD4;
+  --np-shadow: rgba(200, 16, 46, 0.08);
+  --np-font-ne: 'Hind Siliguri', 'Noto Sans Devanagari', 'Mangal', sans-serif;
+  --np-font-en: 'Inter', 'Segoe UI', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--np-font-en), var(--np-font-ne), sans-serif;
+  background: linear-gradient(180deg, #F0EBE4 0%, #F8F6F1 100%);
+  color: var(--np-text);
+  min-height: 100vh;
+  line-height: 1.65;
+}
+
+/* Government Header */
+.gov-header {
+  background: linear-gradient(135deg, #C8102E 0%, #A30D24 100%);
+  color: #fff;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 30px rgba(200,16,46,0.25);
+}
+
+.gov-header::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -10%; width: 120%; height: 200%;
+  background: radial-gradient(circle at 30% 20%, rgba(212,175,55,0.08) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.gov-top-bar {
+  background: rgba(0,0,0,0.25);
+  padding: 6px 40px;
+  font-size: 0.78rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.gov-top-bar a { color: rgba(255,255,255,0.85); text-decoration: none; margin-left: 16px; font-size: 0.75rem; transition: color 0.2s; }
+.gov-top-bar a:hover { color: #fff; text-decoration: underline; }
+
+.gov-brand {
+  max-width: 1200px; margin: 0 auto; padding: 36px 40px 32px; position: relative; z-index: 2;
+  display: flex; align-items: center; gap: 24px;
+}
+
+.gov-emblem {
+  width: 72px; height: 72px; flex-shrink: 0;
+  background: linear-gradient(135deg, #fff 60%, #F5F0E6 100%);
+  border-radius: 50%; border: 3px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2), inset 0 2px 8px rgba(255,255,255,0.3);
+  font-size: 2rem;
+}
+
+.gov-brand-text h1 { font-family: var(--np-font-ne), var(--np-font-en); font-size: 2rem; font-weight: 700; letter-spacing: 0.02em; line-height: 1.2; margin-bottom: 4px; }
+.gov-brand-text h1 span { color: var(--np-gold); }
+.gov-brand-text p { font-size: 1rem; opacity: 0.9; font-weight: 300; letter-spacing: 0.01em; }
+
+/* Language Toggle */
+.lang-toggle {
+  position: absolute; right: 40px; top: 32px; z-index: 3;
+  display: flex; gap: 6px; background: rgba(255,255,255,0.1); padding: 4px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); backdrop-filter: blur(8px);
+}
+.lang-toggle button {
+  background: transparent; border: none; color: rgba(255,255,255,0.7); padding: 6px 14px; border-radius: 20px; font-size: 0.78rem; cursor: pointer; transition: all 0.2s; font-family: inherit; font-weight: 500;
+}
+.lang-toggle button.active { background: #fff; color: var(--np-red); box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+.lang-toggle button:hover:not(.active) { color: #fff; }
+
+/* Navigation */
+.gov-nav {
+  background: rgba(0,0,0,0.15); border-top: 1px solid rgba(255,255,255,0.08);
+  max-width: 1200px; margin: 0 auto; padding: 0 40px;
+  display: flex; gap: 0; align-items: center;
+}
+.gov-nav a {
+  color: rgba(255,255,255,0.92); text-decoration: none; padding: 14px 20px; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.01em; transition: all 0.2s; border-bottom: 3px solid transparent;
+}
+.gov-nav a:hover, .gov-nav a.active { border-bottom-color: var(--np-gold); background: rgba(255,255,255,0.05); }
+
+/* Main Layout */
+.container { max-width: 1200px; margin: 0 auto; padding: 48px 40px 80px; }
+
+/* Cards */
+.card {
+  background: var(--np-card);
+  border: 1px solid var(--np-border);
+  border-radius: 16px;
+  padding: 32px 32px 28px;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 30px var(--np-shadow), 0 1px 3px rgba(0,0,0,0.04);
+  position: relative; overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.2s ease;
+}
+.card:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(200,16,46,0.1); }
+
+.card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--np-red), var(--np-gold), var(--np-green)); border-radius: 16px 16px 0 0;
+}
+
+.card h2 {
+  font-family: var(--np-font-ne), var(--np-font-en);
+  color: var(--np-red-dark); font-size: 1.35rem; font-weight: 700; margin: 0 0 4px; letter-spacing: 0.01em;
+}
+.card h2 small { font-weight: 400; color: var(--np-subtext); font-size: 0.85em; }
+
+.card .subtitle { color: var(--np-subtext); font-size: 0.9rem; margin-bottom: 20px; }
+
+/* Buttons */
+button, .btn {
+  background: linear-gradient(135deg, var(--np-red) 0%, var(--np-red-dark) 100%);
+  color: #fff; border: none; padding: 14px 28px; border-radius: 10px; font-size: 1rem; cursor: pointer; transition: all 0.2s; font-family: inherit; font-weight: 600; box-shadow: 0 4px 15px rgba(200,16,46,0.25); letter-spacing: 0.01em;
+}
+button:hover, .btn:hover { background: linear-gradient(135deg, var(--np-green) 0%, var(--np-green-dark) 100%); box-shadow: 0 6px 20px rgba(0,122,61,0.3); transform: translateY(-1px); }
+button:active, .btn:active { transform: translateY(0); }
+
+.btn-secondary { background: linear-gradient(135deg, #555 0%, #333 100%); box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+.btn-secondary:hover { background: linear-gradient(135deg, #333 0%, #111 100%); }
+
+/* Inputs */
+input, textarea, select {
+  width: 100%; padding: 12px 14px; border: 1.5px solid var(--np-border); border-radius: 8px; font-size: 0.95rem; font-family: inherit; background: #FAFAF7; transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+}
+input:focus, textarea:focus, select:focus { border-color: var(--np-red); box-shadow: 0 0 0 3px rgba(200,16,46,0.1); background: #fff; }
+
+label { display: block; margin-top: 14px; font-weight: 600; color: var(--np-dark); font-size: 0.88rem; letter-spacing: 0.01em; }
+
+/* Stats Grid — Official Dashboard Style */
+.stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 8px; }
+.stat-box {
+  background: linear-gradient(145deg, #fff 0%, #F8F5F0 100%); padding: 24px 20px; border-radius: 12px; text-align: center; border: 1px solid var(--np-border); border-top: 4px solid var(--np-red); position: relative; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.stat-box:nth-child(2) { border-top-color: var(--np-gold); }
+.stat-box:nth-child(3) { border-top-color: var(--np-green); }
+.stat-box:nth-child(4) { border-top-color: var(--np-red-dark); }
+.stat-box h3 { margin: 0; font-size: 2.4rem; color: var(--np-red); font-weight: 700; line-height: 1; letter-spacing: -0.02em; }
+.stat-box:nth-child(2) h3 { color: #B08D1A; }
+.stat-box:nth-child(3) h3 { color: var(--np-green); }
+.stat-box:nth-child(4) h3 { color: var(--np-red-dark); }
+.stat-box p { margin: 8px 0 0 0; color: var(--np-subtext); font-weight: 500; font-size: 0.92rem; letter-spacing: 0.02em; }
+
+/* Post Card */
+.post-card { border-left: 4px solid var(--np-red); padding: 18px 20px; background: #FAFAF7; border-radius: 0 10px 10px 0; margin-bottom: 14px; transition: background 0.2s; }
+.post-card:hover { background: #F0EBE4; }
+.post-card strong { color: var(--np-dark); font-size: 1.05rem; display: block; margin-bottom: 6px; }
+.post-card img { max-width: 140px; max-height: 140px; border-radius: 8px; margin: 8px 8px 4px 0; object-fit: cover; border: 1px solid var(--np-border); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+.post-card p { color: var(--np-subtext); margin: 6px 0; font-size: 0.92rem; }
+
+/* Badges */
+.badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.02em; text-transform: uppercase; }
+.badge-completed { background: #E6F4EA; color: var(--np-green); border: 1px solid #C8E6D9; }
+.badge-work { background: #FFF8E1; color: #B08D1A; border: 1px solid #F0E6B4; }
+.badge-pending { background: #FCEAE8; color: var(--np-red); border: 1px solid #F5CBC8; }
+
+/* Tables */
+.table-wrap { overflow-x: auto; border: 1px solid var(--np-border); border-radius: 10px; }
+table { width: 100%; border-collapse: collapse; background: #fff; }
+th, td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--np-border); font-size: 0.88rem; }
+th { background: linear-gradient(135deg, var(--np-red) 0%, var(--np-red-dark) 100%); color: #fff; font-weight: 600; letter-spacing: 0.03em; }
+tr:hover td { background: #F8F5F0; }
+
+/* Alert */
+.alert { padding: 14px 18px; border-radius: 10px; margin-bottom: 20px; font-weight: 500; border-left: 4px solid; }
+.alert-success { background: #E6F4EA; color: var(--np-green-dark); border-color: var(--np-green); }
+.alert-info { background: #EAF2FB; color: #1A3A5C; border-color: #4A90D9; }
+
+/* Hidden Admin Page */
+.hidden-page { background: linear-gradient(180deg, #0D1117 0%, #161B22 100%); min-height: 100vh; padding: 40px 20px; font-family: monospace; }
+.hidden-page .container { max-width: 900px; margin: 0 auto; background: #161B22; padding: 30px; border: 1px solid #30363D; border-radius: 12px; color: #C9D1D9; }
+.hidden-page h1 { color: #58A6FF; font-size: 1.3rem; border-bottom: 1px solid #30363D; padding-bottom: 14px; }
+.hidden-page input, .hidden-page textarea { background: #0D1117; color: #C9D1D9; border: 1px solid #30363D; border-radius: 6px; padding: 8px 10px; font-family: monospace; }
+.hidden-page button { background: #238636; color: #fff; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-family: monospace; font-weight: 600; }
+.hidden-page button:hover { background: #2EA043; }
+
+/* Footer */
+.footer-gov {
+  background: linear-gradient(135deg, var(--np-dark) 0%, #0F0F23 100%);
+  color: rgba(255,255,255,0.8); padding: 48px 40px 24px; text-align: center;
+  border-top: 4px solid var(--np-gold);
+  font-family: var(--np-font-en);
+}
+.footer-gov .emblem-text { font-size: 1.1rem; font-weight: 600; color: #fff; letter-spacing: 0.08em; margin-bottom: 8px; }
+.footer-gov p { color: rgba(255,255,255,0.5); font-size: 0.85rem; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gov-brand { flex-direction: column; align-items: flex-start; padding: 28px 20px; }
+  .gov-brand-text h1 { font-size: 1.5rem; }
+  .container { padding: 24px 16px 48px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; }
+  .gov-nav { flex-wrap: wrap; }
+  .lang-toggle { position: static; margin-top: 12px; align-self: flex-end; }
+}

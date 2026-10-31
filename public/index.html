@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>वार्ड नं. ११ — घोडसुवा, धनगढी | Ward 11 — Ghodsuwa</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Official Government Header -->
+<header class="gov-header">
+  <div class="gov-top-bar">
+    <span data-en="Government of Nepal — Official Portal" data-ne="नेपाल सरकार — आधिकारिक पोर्टल">नेपाल सरकार — आधिकारिक पोर्टल</span>
+    <div>
+      <a href="#" data-en="Home" data-ne="मुख्य पृष्ठ">मुख्य पृष्ठ</a>
+      <a href="#" data-en="Services" data-ne="सेवाहरू">सेवाहरू</a>
+      <a href="#" data-en="Contact" data-ne="सम्पर्क">सम्पर्क</a>
+    </div>
+  </div>
+  <div class="gov-brand">
+    <div class="gov-emblem" aria-label="Government Emblem">🇳🇵</div>
+    <div class="gov-brand-text">
+      <h1><span data-en="Ward No. 11" data-ne="वार्ड नं. ११">वार्ड नं. ११</span> — <span data-en="Ghodsuwa, Dhangadhi" data-ne="घोडसुवा, धनगढी">घोडसुवा, धनगढी</span></h1>
+      <p data-en="Sudurpaschim Province | Direct contact with citizens" data-ne="सुदूरपश्चिम प्रदेश | जनतासँग प्रत्यक्ष सम्पर्क">सुदूरपश्चिम प्रदेश | जनतासँग प्रत्यक्ष सम्पर्क</p>
+    </div>
+    <div class="lang-toggle" role="group" aria-label="Language selection">
+      <button onclick="setLang('ne')" id="btn-ne" class="active" aria-label="नेपाली">नेपाली</button>
+      <button onclick="setLang('en')" id="btn-en" aria-label="English">English</button>
+    </div>
+  </div>
+  <nav class="gov-nav" aria-label="Main navigation">
+    <a href="#" class="active" data-en="Public Portal" data-ne="सार्वजनिक पोर्टल">सार्वजनिक पोर्टल</a>
+    <a href="#" data-en="Admin Panel" data-ne="प्रशासनिक प्यानल">प्रशासनिक प्यानल</a>
+    <a href="#" data-en="Election" data-ne="निर्वाचन">निर्वाचन</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <!-- Welcome -->
+  <div class="card">
+    <h2><span data-en="Welcome — Ward 11 Ghodsuwa" data-ne="स्वागत — वार्ड ११ घोडसुवा">स्वागत — वार्ड ११ घोडसुवा</span></h2>
+    <p class="subtitle" data-en="Official digital service portal of Ward 11, Ghodsuwa, Dhangadhi, Sudurpaschim Province." data-ne="धनगढी सुदूरपश्चिम प्रदेशको वार्ड नं. ११ घोडसुवाको आधिकारिक डिजिटल सेवा पोर्टल।">धनगढी सुदूरपश्चिम प्रदेशको वार्ड नं. ११ घोडसुवाको आधिकारिक डिजिटल सेवा पोर्टल।</p>
+  </div>
+
+  <!-- Complaint Form -->
+  <div class="card">
+    <h2 data-en="File a Complaint / Grievance" data-ne="गुनासो / उजुरी दर्ता गर्नुहोस्">गुनासो / उजुरी दर्ता गर्नुहोस्</h2>
+    <p class="subtitle" data-en="You can reveal or hide your identity — both options are available." data-ne="तपाईंको पहिचान खुलाउने वा नखुलाउने — दुवै विकल्प उपलब्ध छ।">तपाईंको पहिचान खुलाउने वा नखुलाउने — दुवै विकल्प उपलब्ध छ।</p>
+
+    <form id="complaintForm" onsubmit="submitComplaint(event)">
+      <label for="title" data-en="Title of Complaint" data-ne="गुनासोको शीर्षक">गुनासोको शीर्षक</label>
+      <input type="text" id="title" name="title" placeholder="जस्तै: बाटोमा धेरै खाल्डा छन्" data-en-ph="e.g., Many potholes on the road" data-ne-ph="जस्तै: बाटोमा धेरै खाल्डा छन्" required>
+
+      <label for="description" data-en="Detailed Description" data-ne="विस्तृत विवरण">विस्तृत विवरण</label>
+      <textarea id="description" name="description" rows="4" placeholder="समस्या के हो? कहाँ छ? कसरी सुधार गर्न सकिन्छ?" data-en-ph="What is the problem? Where is it? How can it be improved?" data-ne-ph="समस्या के हो? कहाँ छ? कसरी सुधार गर्न सकिन्छ?" required></textarea>
+
+      <label data-en="Reveal Identity?" data-ne="पहिचान खुलाउने?">पहिचान खुलाउने?</label>
+      <div style="margin-top:6px; display:flex; gap:24px;">
+        <label style="display:inline; font-weight:400; margin-right:0;">
+          <input type="radio" name="reveal" value="no" checked onchange="toggleIdentity(this)"> <span data-en="Hide" data-ne="खुलाउँदिन">खुलाउँदिन</span>
+        </label>
+        <label style="display:inline; font-weight:400; margin-right:0;">
+          <input type="radio" name="reveal" value="yes" onchange="toggleIdentity(this)"> <span data-en="Reveal" data-ne="खुलाउँछु">खुलाउँछु</span>
+        </label>
+      </div>
+
+      <div id="identityFields" style="display:none;">
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div>
+            <label for="identity_name" data-en="Name" data-ne="नाम">नाम</label>
+            <input type="text" id="identity_name" name="identity_name" placeholder="तपाईंको नाम" data-en-ph="Your name" data-ne-ph="तपाईंको नाम">
+          </div>
+          <div>
+            <label for="identity_contact" data-en="Contact Number" data-ne="सम्पर्क नम्बर">सम्पर्क नम्बर</label>
+            <input type="text" id="identity_contact" name="identity_contact" placeholder="९८xxxxxxxx" data-en-ph="98xxxxxxxx" data-ne-ph="९८xxxxxxxx">
+          </div>
+        </div>
+      </div>
+
+      <label for="category_id" data-en="Select Category" data-ne="श्रेणी छान्नुहोस्">श्रेणी छान्नुहोस्</label>
+      <select id="category_id" name="category_id" required>
+        <option value="" disabled selected data-en="Choose a category" data-ne="श्रेणी छान्नुहोस्">श्रेणी छान्नुहोस्</option>
+      </select>
+
+      <label for="user_email" data-en="Google / Gmail Account (Required for Tracing)" data-ne="गुगल / जीमेल खाता (ट्रेसिङका लागि अनिवार्य)">गुगल / जीमेल खाता (ट्रेसिङका लागि अनिवार्य)</label>
+      <input type="email" id="user_email" name="user_email" placeholder="yourname@gmail.com" data-en-ph="yourname@gmail.com" data-ne-ph="yourname@gmail.com" required>
+      <p style="font-size:0.8rem; color:#777; margin-top:4px;" data-en="Even anonymous complaints are traced via Google account for fairness and transparency." data-ne="गोप्य गुनासो पनि गुगल खातामार्फत ट्रेस गरिन्छ — न्याय र पारदर्शिताका लागि।">गोप्य गुनासो पनि गुगल खातामार्फत ट्रेस गरिन्छ — न्याय र पारदर्शिताका लागि।</p>
+
+      <div style="margin-top: 24px;">
+        <button type="submit" data-en="Submit Complaint" data-ne="गुनासो पठाउनुहोस्">गुनासो पठाउनुहोस्</button>
+      </div>
+      <p style="font-size:0.82rem; color:#777; margin-top:12px;" data-en="This complaint will only be shown in the admin panel, not in the public panel." data-ne="यो गुनासो प्रशासनिक प्यानलमा मात्र देखिनेछ। सामान्य प्यानलमा देखिने छैन।">यो गुनासो प्रशासनिक प्यानलमा मात्र देखिनेछ। सामान्य प्यानलमा देखिने छैन।</p>
+    </form>
+  </div>
+
+  <!-- Statistics -->
+  <div class="card">
+    <h2 data-en="Work Statistics (Government Style)" data-ne="कामको विवरण (सरकार जस्तै)">कामको विवरण (सरकार जस्तै)</h2>
+    <p class="subtitle" data-en="Real-time progress tracking of complaints — just like Nepal's government mechanism." data-ne="गुनासोको वास्तविक-समय प्रगति ट्र्याकिङ — नेपालको सरकारको संयन्त्र जस्तै।">गुनासोको वास्तविक-समय प्रगति ट्र्याकिङ — नेपालको सरकारको संयन्त्र जस्तै।</p>
+    <div class="stats-grid">
+      <div class="stat-box">
+        <h3 id="stat-completed">0</h3>
+        <p data-en="Completed" data-ne="सम्पन्न">सम्पन्न</p>
+      </div>
+      <div class="stat-box">
+        <h3 id="stat-onwork">0</h3>
+        <p data-en="On Work" data-ne="काम भइरहेको">काम भइरहेको</p>
+      </div>
+      <div class="stat-box">
+        <h3 id="stat-pending">0</h3>
+        <p data-en="Pending" data-ne="बाँकी">बाँकी</p>
+      </div>
+      <div class="stat-box">
+        <h3 id="stat-total">0</h3>
+        <p data-en="Total" data-ne="जम्मा">जम्मा</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Public Posts -->
+  <div class="card">
+    <h2 data-en="Administrative Updates" data-ne="प्रशासनिक अपडेटहरू">प्रशासनिक अपडेटहरू</h2>
+    <div id="postsList"><p data-en="Loading..." data-ne="लोड हुँदै...">लोड हुँदै...</p></div>
+  </div>
+
+  <!-- Candidates -->
+  <div class="card">
+    <h2 data-en="Election Candidates" data-ne="निर्वाचन उम्मेदवारहरू">निर्वाचन उम्मेदवारहरू</h2>
+    <p class="subtitle" data-en="During election time, candidates can create profiles showing their completed work, ongoing work, and pending complaints so citizens can make informed choices." data-ne="निर्वाचनको समयमा उम्मेदवारहरूले आफ्नो सम्पन्न, चलिरहेको र बाँकी कामको विवरण यहाँ देखाउन सक्नुहुन्छ ताकि नागरिकहरूले राम्रो निर्णय लिन सकून्।">निर्वाचनको समयमा उम्मेदवारहरूले आफ्नो सम्पन्न, चलिरहेको र बाँकी कामको विवरण यहाँ देखाउन सक्नुहुन्छ ताकि नागरिकहरूले राम्रो निर्णय लिन सकून्।</p>
+    <div id="candidatesList"><p data-en="Loading..." data-ne="लोड हुँदै...">लोड हुँदै...</p></div>
+  </div>
+
+</div>
+
+<footer class="footer-gov">
+  <div class="emblem-text">🇳🇵 <span data-en="Government of Nepal" data-ne="नेपाल सरकार">नेपाल सरकार</span> — <span data-en="Ward No. 11" data-ne="वार्ड नं. ११">वार्ड नं. ११</span></div>
+  <p data-en="Ward 11 Ghodsuwa, Dhangadhi, Sudurpaschim Province | Official Government Portal" data-ne="वार्ड ११ घोडसुवा, धनगढी, सुदूरपश्चिम प्रदेश | आधिकारिक सरकारी पोर्टल">वार्ड ११ घोडसुवा, धनगढी, सुदूरपश्चिम प्रदेश | आधिकारिक सरकारी पोर्टल</p>
+</footer>
+
+<script>
+// Language Toggle
+function setLang(lang) {
+  document.documentElement.lang = lang === 'en' ? 'en' : 'ne';
+  document.getElementById('btn-ne').classList.toggle('active', lang === 'ne');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  document.querySelectorAll('[data-en]').forEach(el => {
+    const text = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-ne') || el.textContent;
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+      const ph = lang === 'en' ? el.getAttribute('data-en-ph') : el.getAttribute('data-ne-ph');
+      if (ph) el.placeholder = ph;
+    } else {
+      el.textContent = text || el.textContent;
+    }
+  });
+  // Also update placeholders on inputs
+  document.querySelectorAll('input[data-en-ph]').forEach(el => {
+    const ph = lang === 'en' ? el.getAttribute('data-en-ph') : (el.getAttribute('data-ne-ph') || el.getAttribute('data-en-ph'));
+    if (ph) el.placeholder = ph;
+  });
+}
+
+function toggleIdentity(radio) {
+  document.getElementById('identityFields').style.display = radio.value === 'yes' ? 'block' : 'none';
+}
+
+async function submitComplaint(e) {
+  e.preventDefault();
+  const data = {
+    title: document.getElementById('title').value,
+    description: document.getElementById('description').value,
+    reveal_identity: document.querySelector('input[name="reveal"]:checked').value === 'yes',
+    identity_name: document.getElementById('identity_name').value,
+    identity_contact: document.getElementById('identity_contact').value,
+    category_id: document.getElementById('category_id').value,
+    user_email: document.getElementById('user_email').value
+  };
+  try {
+    const res = await fetch('/api/complaint', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data) });
+    const result = await res.json();
+    if (result.success) {
+      alert(lang === 'en' ? 'Complaint submitted successfully! ID: ' + result.complaint_id : 'गुनासो सफलतापूर्वक दर्ता भयो! ID: ' + result.complaint_id);
+      document.getElementById('complaintForm').reset();
+      document.getElementById('identityFields').style.display = 'none';
+      loadStats();
+    } else {
+      alert('Error: ' + (result.error || 'Unknown'));
+    }
+  } catch (err) {
+    alert('Server error: ' + err.message);
+  }
+}
+
+// Stats
+async function loadStats() {
+  try {
+    const res = await fetch('/api/stats');
+    const data = await res.json();
+    document.getElementById('stat-completed').textContent = data.completed || 0;
+    document.getElementById('stat-onwork').textContent = data.on_work || 0;
+    document.getElementById('stat-pending').textContent = data.pending || 0;
+    document.getElementById('stat-total').textContent = data.total || 0;
+  } catch (e) { console.error('Stats error', e); }
+}
+
+// Posts
+async function loadPosts() {
+  try {
+    const res = await fetch('/api/posts');
+    const posts = await res.json();
+    const container = document.getElementById('postsList');
+    if (!posts.length) {
+      container.innerHTML = '<p data-en="No updates yet." data-ne="अहिलेसम्म कुनै अपडेट छैन।">अहिलेसम्म कुनै अपडेट छैन।</p>';
+      return;
+    }
+    container.innerHTML = posts.map(p => `
+      <div class="post-card">
+        <strong>${p.complaint_title ? (document.documentElement.lang === 'en' ? 'Complaint: ' : 'गुनासो: ') + p.complaint_title : (document.documentElement.lang === 'en' ? 'General Update' : 'सामान्य अपडेट')}</strong>
+        <span class="badge ${p.status_text ? (p.status_text.toLowerCase().includes('completed') ? 'badge-completed' : (p.status_text.toLowerCase().includes('work') ? 'badge-work' : 'badge-pending')) : 'badge-pending'}">${p.status_text || (document.documentElement.lang === 'en' ? 'Update' : 'अपडेट')}</span>
+        <p>${p.content}</p>
+        <div>
+          ${p.photos && p.photos.length ? p.photos.map(ph => `<img src="${ph}" alt="update photo">`).join('') : ''}
+        </div>
+        <small style="color:#777;">${document.documentElement.lang === 'en' ? 'By: ' : 'द्वारा: '}${p.created_by || 'Administration'} | ${new Date(p.created_at).toLocaleDateString(document.documentElement.lang === 'en' ? 'en-US' : 'ne-NP')}</small>
+      </div>
+    `).join('');
+  } catch (e) { document.getElementById('postsList').innerHTML = '<p>Error loading posts.</p>'; }
+}
+
+// Candidates
+async function loadCandidates() {
+  try {
+    const res = await fetch('/api/candidates');
+    const candidates = await res.json();
+    const container = document.getElementById('candidatesList');
+    if (!candidates.length) {
+      container.innerHTML = '<p data-en="No election time or no candidates registered." data-ne="निर्वाचन समय छैन वा उम्मेदवार दर्ता भएको छैन।">निर्वाचन समय छैन वा उम्मेदवार दर्ता भएको छैन।</p>';
+      return;
+    }
+    container.innerHTML = candidates.map(c => `
+      <div class="post-card">
+        <h3 style="margin-top:0; color: var(--np-red-dark);">${c.name || 'Candidate'} — ${c.election_name || 'Election'}</h3>
+        <p>${c.profile_text || (document.documentElement.lang === 'en' ? 'No description.' : 'कुनै विवरण छैन।')}</p>
+        <div>
+          <strong>${document.documentElement.lang === 'en' ? 'Work Statistics:' : 'कामको विवरण:'}</strong>
+          <ul>
+            <li>${document.documentElement.lang === 'en' ? 'Completed: ' : 'सम्पन्न: '}${c.stats ? c.stats.completed || 0 : 0}</li>
+            <li>${document.documentElement.lang === 'en' ? 'On Work: ' : 'काम भइरहेको: '}${c.stats ? c.stats.on_work || 0 : 0}</li>
+            <li>${document.documentElement.lang === 'en' ? 'Pending: ' : 'बाँकी: '}${c.stats ? c.stats.pending || 0 : 0}</li>
+          </ul>
+        </div>
+        ${c.photo_url ? `<img src="${c.photo_url}" alt="profile" style="max-width:120px; max-height:120px; border-radius:8px;">` : ''}
+      </div>
+    `).join('');
+  } catch (e) { document.getElementById('candidatesList').innerHTML = '<p>Error loading candidates.</p>'; }
+}
+
+// Load categories into dropdown
+async function loadCategories() {
+  try {
+    const res = await fetch('/api/categories');
+    const cats = await res.json();
+    const sel = document.getElementById('category_id');
+    if (sel) {
+      const current = sel.value;
+      sel.innerHTML = `<option value="" disabled ${!current ? 'selected' : ''} data-en="Choose a category" data-ne="श्रेणी छान्नुहोस्">श्रेणी छान्नुहोस्</option>`;
+      cats.forEach(c => {
+        const opt = document.createElement('option');
+        opt.value = c.id;
+        opt.textContent = document.documentElement.lang === 'en' ? c.name_english : c.name_nepali;
+        if (current && parseInt(current) === c.id) opt.selected = true;
+        sel.appendChild(opt);
+      });
+    }
+  } catch (e) { console.error('Load categories error', e); }
+}
+
+loadStats();
+loadCategories();
+loadPosts();
+loadCandidates();
+setInterval(() => { loadStats(); loadPosts(); loadCandidates(); }, 30000);
+</script>
+</body>
+</html>
